@@ -50,3 +50,16 @@ dataset, model objects, and generated outputs are not included.
 &gt; Mofokeng, O.R. (2026). *A Comparative Analysis of Predictive Modelling Techniques 
 &gt; for Type 2 Diabetes Risk Prediction: A Focus on Calibration and Explainability*. 
 &gt; NITheCS Winter Internship Scientific Report.
+
+
+## Reproducing the Environment
+
+This project uses R 4.5.1. Key packages include `tidymodels`, `glmnet`, `mgcv`, 
+`ranger`, `xgboost`, `fastshap`, `shapviz`, and `dcurves`.
+
+To recreate the exact environment:
+
+```r
+install.packages("renv")
+renv::restore()
+```
