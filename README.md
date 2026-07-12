@@ -1,42 +1,52 @@
-# Predictive Modelling for Type 2 Diabetes Risk: NITheCS Winter 2026
+# NITheCS Winter 2026: Diabetes Risk Prediction
 
-A comparative analysis of Elastic Net, GAM, Random Forest, and XGBoost for 
-Type 2 diabetes risk prediction, with emphasis on calibration and explainability.
+Comparative analysis of Elastic Net, GAM, Random Forest, and XGBoost for 
+Type 2 diabetes risk prediction using CDC BRFSS 2015 data.
 
 **Author:** Odey R. Mofokeng  
-**Affiliation:** University of the Witwatersrand / NITheCS Winter Internship  
+**Institution:** University of the Witwatersrand  
 **Host:** University of Venda, Department of Physics  
 **Supervisors:** Prof. Eric Maluta & Dr. Tshifhiwa Ranwah  
 
-## Overview
-This repository contains the full analysis pipeline for the scientific report 
-submitted to the NITheCS Winter Internship Programme (June–July 2026). 
-Using the CDC BRFSS 2015 diabetes health indicators dataset (n=253,680), 
-we evaluate four model families across discrimination, calibration, and clinical 
-utility metrics.
+## About This Repository
 
-## Repository Structure
-- `R/` — Analysis scripts (numbered by execution order)
-- `data/` — Data dictionary and preprocessing notes
-- `outputs/` — Generated figures and tables
-- `paper/` — LaTeX source and compiled manuscript
-- `presentation/` — Internship presentation materials
+This repository contains the R analysis scripts and presentation materials for the 
+NITheCS Winter Internship scientific report. Due to file size constraints, the 
+dataset, model objects, and generated outputs are not included.
 
-## Key Findings
-- Four models achieved practically equivalent discrimination (AUC 0.817–0.829)
-- GAM was best calibrated without post-hoc adjustment (ECE = 0.007)
-- Random Forest was the **only** model harmed by both Platt scaling and isotonic regression
-- Cross-model SHAP analysis revealed consistent importance of general health, BMI, age, and blood pressure
+## What's Included
 
-## Reproducibility
-This project uses **R 4.5.1** and the `tidymodels` ecosystem. To reproduce:
+| Folder | Contents |
+|--------|----------|
+| `R/` | Analysis scripts (EDA, model fitting, evaluation, SHAP, subgroup analysis) |
+| `presentation/` | Internship presentation slides |
 
-```r
-# Install dependencies
-install.packages("renv")
-renv::restore()
+## What's NOT Included (and why)
 
-# Run pipeline in order
-source("R/01_eda_and_preprocessing.R")
-source("R/02_fit_models.R")
-# ... etc
+- **Dataset:** CDC BRFSS 2015 Diabetes Health Indicators (~250MB).  
+  Download from [CDC BRFSS](https://www.cdc.gov/brfss/annual_data/annual_2015.html)
+- **Model outputs:** Serialized model objects are too large for GitHub
+- **Generated figures/tables:** Can be reproduced by running the scripts
+
+## How to Reproduce
+
+1. Download the BRFSS 2015 dataset and place it in a `data/` folder
+2. Install R packages: `tidymodels`, `glmnet`, `mgcv`, `ranger`, `xgboost`, `fastshap`, `shapviz`, `dcurves`, `DALEX`
+3. Run scripts in order:
+   - `01_eda_and_preprocessing.R`
+   - `02_fit_models.R`
+   - `03_model_evaluation.R`
+   - `04_shap_explainability.R`
+   - `05_subgroup_fairness_dca.R`
+
+## Key Findings (Summary)
+
+- **Discrimination:** All four models achieved similar AUC (0.817–0.829)
+- **Calibration:** GAM was best calibrated raw; RF was uniquely harmed by recalibration
+- **Explainability:** General health, BMI, age, and blood pressure were consistently top predictors across all models
+
+## Citation
+
+&gt; Mofokeng, O.R. (2026). *A Comparative Analysis of Predictive Modelling Techniques 
+&gt; for Type 2 Diabetes Risk Prediction: A Focus on Calibration and Explainability*. 
+&gt; NITheCS Winter Internship Scientific Report.
