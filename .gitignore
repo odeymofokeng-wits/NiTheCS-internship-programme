@@ -1,0 +1,34 @@
+# R-specific
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.renv/
+
+# Large files / data limits
+*.csv
+*.sav
+*.dta
+*.xlsx
+*.rds
+*.RData
+
+# Outputs that bloat repo (keep code, not generated files)
+outputs/models/*.rds
+outputs/models/*.RData
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# LaTeX compilation debris
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+paper/*.pdf   # Keep only the final manuscript, or none if arXiv-bound
+
+# Temporary
+*.tmp
